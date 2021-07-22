@@ -1,0 +1,50 @@
+{
+  "theme": {
+    "primary": {
+      "peach": "rgb(231, 129, 107)",
+      "dark": "rgb(29, 28, 30)",
+      "light": "rgb(255, 255, 255)"
+    },
+    "secondary": {
+      "peach": "rgb(255, 173, 155)",
+      "dark": "rgb(51, 49, 54)",
+      "light": "rgb(241, 243, 245)"
+    }
+  },
+  "viewport": {
+    "min" : {
+      "tablet": "481px",
+      "laptop": "769px",
+      "desktop": "1025px"
+    }
+  },
+  "css": {
+    "window": {
+      "horizontalGap": {
+        "mobile": "30px",
+        "laptop": "10vw" 
+      },
+      "verticalGap": {
+        "mobile": "90px"
+      },
+      "mediaObjectGap": "80px",
+      "designLinkGap": "20px",
+      "designCardGap": "30px",
+      "borderRadius": "10px"
+    },
+    "home": {
+      "bubblePx": 500
+    },
+    "contact": {
+      "bubblePx": 350
+    },
+    "about": {
+      "bubblePx": 500
+    },
+    "design": {
+      "rollDuration": 20000,
+      "fadeInRatio": 0.1,
+      "fadeOutRatio": 0.9
+    }
+  }
+}
