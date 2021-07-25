@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 import { viewport } from '../../common/config.json';
 import hardString from '../../common/hard-string';
@@ -7,9 +8,6 @@ import DesignCard, { Wrapper as _DesignCard } from './DesignCard';
 import CallToAction from '../shared/call-to-action/CallToAction';
 import DesignContainer from './DesignContainer';
 import Greeting from './greeting/Greeting';
-
-const Wrapper = styled.div`
-`;
 
 const CardContainer = styled.div`
   padding: 0 var(--horizontal-gap);
@@ -44,21 +42,32 @@ const Design = ({ type }) => {
     }
   }
 
-  return (
-    <Wrapper>
+  const showInfoToast = message => toast.info(message);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
+  return (
+    <div>
       <Greeting title={typeInfo.titleNoCap} desc={typeInfo.description} />
 
       <CardContainer>
         {typeInfo.cards.map((item, index) =>
-          <DesignCard key={index} title={item.title} desc={item.description} imageURL={item.imageURL} />
+          <DesignCard
+            key={index}
+            title={item.title}
+            desc={item.description}
+            imageURL={item.imageURL}
+            onClick={() => showInfoToast(`🔔 Clicked on ${item.titleNoCap}!`)}
+          />
         )}
       </CardContainer>
 
       <DesignContainer type1={types[0]} type2={types[1]} />
 
       <CallToAction />
-    </Wrapper>
+    </div>
   );
 }
 

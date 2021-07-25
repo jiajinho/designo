@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { viewport } from '../../common/config.json';
@@ -8,8 +8,7 @@ import MediaLocations from '../shared/MediaLocations';
 import Greeting, { Wrapper as _Greeting } from './greeting/Greeting';
 import MoreAbout, { Wrapper as _MoreAbout } from './MoreAbout';
 
-const Wrapper = styled.div`
-
+const Wrapper = styled.div` 
   & ${_CallToAction} {
     margin-top: var(--vertical-gap);
   }
@@ -24,6 +23,11 @@ const Wrapper = styled.div`
 const About = () => {
 
   const { worldClassTalent, realDeal } = hardStrings.about.more;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   return (
     <Wrapper>

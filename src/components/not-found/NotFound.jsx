@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import { viewport, css } from '../../common/config.json';
+import { viewport } from '../../common/config.json';
 import Button, { Wrapper as _Button } from '../../common/jsx/Button';
 import TangledThought, { Wrapper as _TangledThought } from './TangledThought';
 import DescriptiveTitle, { Title, Wrapper as _DescriptiveTitle } from '../../common/jsx/DescriptiveTitle';
@@ -30,6 +30,10 @@ const Wrapper = styled.div`
 `;
 
 const NotFound = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Wrapper>

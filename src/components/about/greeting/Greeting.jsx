@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { viewport } from '../../../common/config.json';
-import { about } from '../../../common/hard-string.json';
+import hardString from '../../../common/hard-string';
 import MediaContext from '../../../common/MediaContext';
 import DescriptiveTitle, { Title, Wrapper as _DescriptiveTitle } from '../../../common/jsx/DescriptiveTitle';
 import BubbleBackground, { Wrapper as _BubbleBackground } from './BubbleBackground';
@@ -91,14 +91,8 @@ const Greeting = () => {
 
       <BubbleBackground>
         <DescriptiveTitle
-          title="About Us"
-          desc={`
-          Founded in 2010, we are a creative agency that produces lasting results
-          for our clients. We've partnered with many startups, corporations, and
-          nonprofits alike to craft designs that make real impact. We're always 
-          looking forward to creating brands, products, and digital experiences 
-          that connect with our clients' audiences.
-        `}
+          title={hardString.about.greeting.title}
+          desc={hardString.about.greeting.description}
         />
       </BubbleBackground>
 

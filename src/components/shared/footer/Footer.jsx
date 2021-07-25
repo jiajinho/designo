@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
 
 import { viewport } from '../../../common/config.json';
 import DescriptiveTitle, { Wrapper as DescriptiveTitleWrapper } from '../../../common/jsx/DescriptiveTitle';
@@ -65,37 +66,42 @@ const ContactContainer = styled.div`
   }
 `;
 
-const Footer = () => (
-  <Wrapper>
-    <LinkContainer>
-      <Designo light />
+const Footer = () => {
 
-      <NavLinks />
-    </LinkContainer>
+  const showInfoToast = message => toast.info(message);
 
-    <ContactContainer>
-      <DescriptiveTitle
-        light
-        title="Designo Central Office"
-        addr1="3886 Wellington Street"
-        addr2="Toronto, Ontario M9C 3J5"
-      />
-      <DescriptiveTitle
-        light
-        title="Contact Us (Central Office)"
-        phone="P : +1 253-863-8967"
-        email="M : contact@designo.co"
-      />
+  return (
+    <Wrapper>
+      <LinkContainer>
+        <Designo light />
 
-      <SocialMediaContainer>
-        <FacebookIcon />
-        <InstagramIcon />
-        <TwitterIcon />
-        <YoutubeIcon />
-        <PinterestIcon />
-      </SocialMediaContainer>
-    </ContactContainer>
-  </Wrapper>
-);
+        <NavLinks />
+      </LinkContainer>
+
+      <ContactContainer>
+        <DescriptiveTitle
+          light
+          title="Designo Central Office"
+          addr1="3886 Wellington Street"
+          addr2="Toronto, Ontario M9C 3J5"
+        />
+        <DescriptiveTitle
+          light
+          title="Contact Us (Central Office)"
+          phone="P : +1 253-863-8967"
+          email="M : contact@designo.co"
+        />
+
+        <SocialMediaContainer>
+          <FacebookIcon showInfoToast={showInfoToast} />
+          <InstagramIcon showInfoToast={showInfoToast} />
+          <TwitterIcon showInfoToast={showInfoToast} />
+          <YoutubeIcon showInfoToast={showInfoToast} />
+          <PinterestIcon showInfoToast={showInfoToast} />
+        </SocialMediaContainer>
+      </ContactContainer>
+    </Wrapper>
+  );
+}
 
 export default React.memo(Footer);

@@ -9,7 +9,7 @@ import NavLinks from './NavLinks';
 const Wrapper = styled.div`
   position: relative;
   height: 90px;
-  z-index: 10;
+  z-index: 2000;
 `;
 
 const Banner = styled.div`
@@ -43,7 +43,10 @@ const Header = () => {
         />
       </Banner>
 
-      <NavLinks expand={expand} />
+      <NavLinks
+        expand={expand}
+        setExpand={setExpand}
+      />
     </Wrapper>
   );
 }

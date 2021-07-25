@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import L from 'leaflet';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useMediaPredicate } from 'react-media-hook';
+import { ToastContainer } from 'react-toastify';
 
 import { viewport, theme, css } from './common/config.json';
 import hardString from './common/hard-string';
@@ -19,6 +20,7 @@ import Locations from './components/locations/Locations';
 const Root = styled.div`
   min-height: 100vh;
   position: relative;
+  overflow: hidden;
 `;
 
 function App() {
@@ -58,12 +60,15 @@ function App() {
       '--border-radius': css.window.borderRadius,
       '--bubble-px': `${css.window.bubblePx}px`
     }}>
+      <ToastContainer
+        position="bottom-center"
+        pauseOnHover
+        autoClose={4000}
+      />
+
       <MediaContext.Provider value={_viewport}>
         <TileLayerContext.Provider value={tileLayers}>
-
-
           <BrowserRouter>
-
 
             <Header />
 
@@ -107,7 +112,7 @@ function App() {
           </BrowserRouter>
         </TileLayerContext.Provider>
       </MediaContext.Provider>
-    </Root>
+    </Root >
   )
 }
 

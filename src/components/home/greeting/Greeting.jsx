@@ -78,7 +78,7 @@ const Greeting = () => {
             `}
             />
 
-            <Button light text="LEARN MORE" url="/" />
+            <Button light text="LEARN MORE" url="/about" />
           </MessageContent>
 
         </PhoneBackground>

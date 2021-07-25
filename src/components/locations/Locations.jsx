@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 
 import hardString from '../../common/hard-string';
 import TileLayerContext from '../../common/TileLayerContext';
@@ -20,12 +21,20 @@ const Locations = () => {
 
   const { locations } = hardString;
   const tileLayers = useContext(TileLayerContext);
+  const { hash } = useLocation();
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (hash) document.querySelector(hash).scrollIntoView();
+  });
 
   return (
     <Wrapper>
       {locations.map((item, i) =>
         <LocationCard
-          key={i}
+          key={item.id}
+          id={item.id}
           name={item.name}
           hq={item.hq}
           address={item.address}
@@ -37,7 +46,6 @@ const Locations = () => {
           flexDirectionLaptop={i % 2 === 0 ? "row-reverse" : "row"}
         />
       )}
-
 
       <CallToAction />
     </Wrapper>

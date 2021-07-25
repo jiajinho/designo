@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import L from 'leaflet';
 
-import 'leaflet/dist/leaflet.css';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import retinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
@@ -84,7 +83,7 @@ const InfoContainer = styled.div`
   }
 `;
 
-const LocationCard = ({ name, hq, address, phone, email, lat, lng, tileLayer, flexDirectionLaptop }) => {
+const LocationCard = ({ id, name, hq, address, phone, email, lat, lng, tileLayer, flexDirectionLaptop }) => {
 
   const dom = useRef();
 
@@ -97,7 +96,7 @@ const LocationCard = ({ name, hq, address, phone, email, lat, lng, tileLayer, fl
   }, []);
 
   return (
-    <Wrapper style={{
+    <Wrapper id={id} style={{
       '--background': "rgba(255, 173, 155, .2)",
       '--flex-direction-laptop': flexDirectionLaptop
     }}>

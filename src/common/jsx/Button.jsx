@@ -54,7 +54,7 @@ const Button = ({ light, url, text, onClick }) => {
 
   return (
     <Wrapper
-      onClick={e => onClick(e)}
+      onClick={onClick ? e => onClick(e) : () => { }}
       style={{
         '--color': color,
         '--background': background

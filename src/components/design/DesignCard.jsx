@@ -45,11 +45,12 @@ const Image = styled.div`
   }
 `;
 
-export const Wrapper = styled.div`
+const Container = styled.div`
   border-radius: var(--border-radius);
   overflow: hidden;
   cursor: pointer;
   transition: .25s;
+  width: 100%;
 
   &:hover {
     transform: scale(1.05);
@@ -66,25 +67,41 @@ export const Wrapper = styled.div`
 
   @media screen and (min-width: ${viewport.min.tablet}) {
     display: flex;
+
+    ${Panel} { text-align: left; }
   }
 
   @media screen and (min-width: ${viewport.min.laptop}) {
     display: block;
     width: 280px;
+
+    ${Panel} { text-align: center; }
   }
 `;
 
-const DesignCard = ({ title, desc, imageURL }) => (
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  @media screen and (min-width: ${viewport.min.laptop}) {
+    width: 320px;
+  }
+`;
+
+const DesignCard = ({ title, desc, imageURL, onClick }) => (
   <Wrapper style={{
     '--image-url': `url('${imageURL}')`,
     '--background': "rgba(255, 173, 155, .2)"
-  }} onClick={() => console.log(`Redirect to ${title}!`)}>
-    <Image />
+  }}>
+    <Container onClick={onClick}>
+      <Image />
 
-    <Panel>
-      <h2>{title}</h2>
-      <p>{desc}</p>
-    </Panel>
+      <Panel>
+        <h2>{title}</h2>
+        <p>{desc}</p>
+      </Panel>
+    </Container>
   </Wrapper>
 );
 

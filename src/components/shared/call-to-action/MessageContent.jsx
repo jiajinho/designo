@@ -45,7 +45,7 @@ const MessageContent = ({ heading, description }) => (
       <Description as="p">{description}</Description>
     </div>
 
-    <Button light text="GET IN TOUCH" url="/" />
+    <Button light text="GET IN TOUCH" url="/contact" />
   </Wrapper>
 );
 

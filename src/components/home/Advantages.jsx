@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { viewport } from '../../common/config.json';
-import { advantages } from '../../common/hard-string.json';
+import hardString from '../../common/hard-string';
 import MediaObject, { Wrapper as MediaWrapper, Container as MediaContainer } from '../../common/jsx/MediaObject';
 
 const Wrapper = styled.div`
@@ -44,12 +44,12 @@ const Container = styled.div`
 
 const Advantages = () => {
 
-  const _advantages = advantages;
+  const advantages = hardString.advantages;
 
   return (
     <Wrapper>
       <Container>
-        {_advantages.map(({ imageURL, title, description }, index) =>
+        {advantages.map(({ imageURL, title, description }, index) =>
           <MediaObject
             key={index}
             imageURL={imageURL}

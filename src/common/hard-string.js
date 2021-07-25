@@ -1,5 +1,15 @@
 export default {
   about: {
+    greeting: {
+      title: "About Us",
+      description: `
+        Founded in 2010, we are a creative agency that produces lasting results
+        for our clients. We've partnered with many startups, corporations, and
+        nonprofits alike to craft designs that make real impact. We're always 
+        looking forward to creating brands, products, and digital experiences 
+        that connect with our clients' audiences.
+      `
+    },
     more: {
       worldClassTalent: {
         title: "World-class talent",
@@ -60,31 +70,37 @@ export default {
       cards: [
         {
           title: "EXPRESS",
+          titleNoCap: "Express",
           description: "A multi-carrier shipping website for ecommerce businesses",
           imageURL: "/static/design/web/image-express.jpg"
         },
         {
           title: "TRANSFER",
+          titleNoCap: "Transfer",
           description: "Site for low-cost money transfers and sending money within seconds",
           imageURL: "/static/design/web/image-transfer.jpg"
         },
         {
           title: "PHOTON",
+          titleNoCap: "Photon",
           description: "A state-of-the-art music player with high-resolution audio and DSP effects",
           imageURL: "/static/design/web/image-photon.jpg"
         },
         {
           title: "BUILDER",
+          titleNoCap: "Builder",
           description: "Connects users with local contractors based on their location",
           imageURL: "/static/design/web/image-builder.jpg"
         },
         {
           title: "BLOGR",
+          titleNoCap: "Blogr",
           description: "Blogr is a platform for creating an online blog or publication",
           imageURL: "/static/design/web/image-blogr.jpg"
         },
         {
           title: "CAMP",
+          titleNoCap: "Camp",
           description: "Get expert in training in coding, data, design, and digital marketing",
           imageURL: "/static/design/web/image-camp.jpg"
         }
@@ -103,26 +119,31 @@ export default {
       cards: [
         {
           title: "AIRFILTER",
+          titleNoCap: "AirFilter",
           description: "Solving the problem of poor indoor air quality by filtering the air.",
           imageURL: "/static/design/app/image-airfilter.jpg"
         },
         {
           title: "EYECAM",
+          titleNoCap: "EyeCam",
           description: "Product that lets you edit your favourite photos and videos at any time",
           imageURL: "/static/design/app/image-eyecam.jpg"
         },
         {
           title: "FACEIT",
+          titleNoCap: "FaceIt",
           description: "Get to meet your favourite internet superstar with the faceit app",
           imageURL: "/static/design/app/image-faceit.jpg"
         },
         {
           title: "TODO",
+          titleNoCap: "ToDo",
           description: "A todo app that features cloud sync with light and dark mode",
           imageURL: "/static/design/app/image-todo.jpg"
         },
         {
           title: "LOOPSTUDIOS",
+          titleNoCap: "LoopStudios",
           description: "A VR experience app made for Loopstudios",
           imageURL: "/static/design/app/image-loopstudios.jpg"
         }
@@ -141,16 +162,19 @@ export default {
       cards: [
         {
           title: "TIM BROWN",
+          titleNoCap: "Tim Brown",
           description: "A book cover designed for Tim Brown's new release, 'Change'",
           imageURL: "/static/design/graphic/image-change.jpg"
         },
         {
           title: "BOXED WATER",
+          titleNoCap: "Boxed Water",
           description: "A simple packaging concept made for Boxed Water",
           imageURL: "/static/design/graphic/image-boxed-water.jpg"
         },
         {
           title: "SCIENCE!",
+          titleNoCap: "Science!",
           description: "A poster made in collaboration with the Federal Art Project",
           imageURL: "/static/design/graphic/image-science.jpg"
         }
@@ -159,7 +183,9 @@ export default {
   },
   locations: [
     {
+      id: "ca",
       name: "Canada",
+      nameCaps: "CANADA",
       hq: "Designo Central Office",
       address: [
         '3886 Wellington Street',
@@ -168,10 +194,13 @@ export default {
       phone: '+1 253-863-8967',
       email: 'contact@designo.co',
       lat: 43.64426472131995,
-      lng: -79.3946252325258
+      lng: -79.3946252325258,
+      imageURL: "/static/common/locations/illustration-canada.svg"
     },
     {
+      id: "aus",
       name: "Australia",
+      nameCaps: "AUSTRALIA",
       hq: "Designo AU Office",
       address: [
         '19 Balonne Street',
@@ -180,10 +209,13 @@ export default {
       phone: '(02) 6720 9092',
       email: 'contact@designo.au',
       lat: -30.329401064457144,
-      lng: 149.7882425021095
+      lng: 149.7882425021095,
+      imageURL: "/static/common/locations/illustration-australia.svg"
     },
     {
+      id: "uk",
       name: "United Kingdom",
+      nameCaps: "UNITED KINGDOM",
       hq: "Designo UK Office",
       address: [
         '13 Colorado Way',
@@ -192,7 +224,36 @@ export default {
       phone: '078 3115 1400',
       email: 'contact@designo.uk',
       lat: 51.93943805902307,
-      lng: -3.8814627292346766
+      lng: -3.8814627292346766,
+      imageURL: "/static/common/locations/illustration-united-kingdom.svg"
+    }
+  ],
+  advantages: [
+    {
+      title: "PASSIONATE",
+      description: `
+        Each project starts with an in-depth brand research to ensure we only create products 
+        that serve a purpose. We merge art, design, and technology into exciting new solutions.
+      `,
+      imageURL: "/static/home/illustration-passionate.svg"
+    },
+    {
+      title: "RESOURCEFUL",
+      description: `
+        Everything that we do has a strategic purpose. We use an agile approach in all of our 
+        projects and value customer collaboration. It guarantees superior results that fulfill 
+        our clients' needs.
+      `,
+      imageURL: "/static/home/illustration-resourceful.svg"
+    },
+    {
+      title: "FRIENDLY",
+      description: `
+        We are a group of enthusiastic folks who know how to put people first. Our success 
+        depends on our customers, and we strive to give them the best experience a company 
+        can provide.
+      `,
+      imageURL: "/static/home/illustration-friendly.svg",
     }
   ]
 }
