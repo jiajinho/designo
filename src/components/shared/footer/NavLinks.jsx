@@ -47,14 +47,19 @@ const _Link = styled(Link)`
   }
 `;
 
-const NavLinks = () => (
-  <Wrapper>
-    <Container>
-      <_Link to="/about">OUR COMPANY</_Link>
-      <_Link to="/locations">LOCATIONS</_Link>
-      <_Link to="/contact">CONTACT</_Link>
-    </Container>
-  </Wrapper>
-);
+const NavLinks = () => {
+
+  const scrollToTop = () => window.scrollTo(0, 0);
+
+  return (
+    <Wrapper>
+      <Container>
+        <_Link to="/about" onClick={scrollToTop}>OUR COMPANY</_Link>
+        <_Link to="/locations" onClick={scrollToTop}>LOCATIONS</_Link>
+        <_Link to="/contact" onClick={scrollToTop}>CONTACT</_Link>
+      </Container>
+    </Wrapper>
+  );
+}
 
 export default React.memo(NavLinks);

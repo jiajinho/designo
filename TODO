@@ -1,11 +1,6 @@
-2.0 form logic and backend email handle
+v2.0 
+form logic and backend email handle
+cactus bot 
 
-design card onclick (?) OK
-
-refactor OK
-
-toastify OK
-
-2.0 cactus bot 
-
-leaf background  OK
+v1.1.a 
+clicking on same page will history.push OK

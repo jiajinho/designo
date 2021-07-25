@@ -66,9 +66,9 @@ const _Link = styled(Link)`
 
 const getInitialSpring = immediate => ({ y: "0%", immediate });
 
-const insertLink = (toURL, displayText, setExpand) => (
+const insertLink = (toURL, displayText, onClick) => (
   <div>
-    <_Link to={toURL} onClick={() => setExpand(false)}>
+    <_Link to={toURL} onClick={onClick}>
       {displayText}
     </_Link>
   </div>
@@ -78,6 +78,11 @@ const NavLinks = ({ expand, setExpand }) => {
 
   const { isLaptop } = useContext(MediaContext);
   const [spring, api] = useSpring(() => getInitialSpring(true));
+
+  const handleLinkClick = () => {
+    setExpand(false);
+    window.scrollTo(0, 0);
+  }
 
   useEffect(() => {
     api.start({
@@ -91,9 +96,9 @@ const NavLinks = ({ expand, setExpand }) => {
 
   return (
     <Wrapper style={spring}>
-      {insertLink("/about", "OUR COMPANY", setExpand)}
-      {insertLink("/locations", "LOCATIONS", setExpand)}
-      {insertLink("/contact", "CONTACT", setExpand)}
+      {insertLink("/about", "OUR COMPANY", handleLinkClick)}
+      {insertLink("/locations", "LOCATIONS", handleLinkClick)}
+      {insertLink("/contact", "CONTACT", handleLinkClick)}
     </Wrapper>
   );
 }
