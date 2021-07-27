@@ -13,9 +13,8 @@ const Wrapper = styled(animated.div)`
   padding: 15px var(--horizontal-gap);
   bottom: 0;
   z-index: -1;
-
+  
   background: var(--theme-primary-dark);
-
 
   @media screen and (min-width: ${viewport.min.laptop}) {
     top: 0;
@@ -85,9 +84,7 @@ const NavLinks = ({ expand, setExpand }) => {
   }
 
   useEffect(() => {
-    api.start({
-      y: expand ? "100%" : "0%"
-    });
+    api.start({ y: expand ? "100%" : "0%" });
   }, [expand]);
 
   useEffect(() => {

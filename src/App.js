@@ -54,11 +54,18 @@ function App() {
       '--horizontal-gap-laptop': css.window.horizontalGap.laptop,
 
       '--vertical-gap': css.window.verticalGap.mobile,
-      '--media-object-gap': css.window.mediaObjectGap,
       '--design-link-gap': css.window.designLinkGap,
       '--design-card-gap': css.window.designCardGap,
       '--border-radius': css.window.borderRadius,
-      '--bubble-px': `${css.window.bubblePx}px`
+      '--bubble-px': `${css.window.bubblePx}px`,
+
+      '--media-object-horizontal-gap': css.window.mediaObjectGap.horizontal,
+      '--media-object-vertical-gap': css.window.mediaObjectGap.vertical,
+
+      '--tooltip-icon-size': `${css.window.tooltip.iconSizePx}px`,
+      '--tooltip-icon-size-half': `${css.window.tooltip.iconSizePx / 2}px`,
+      '--tooltip-margin-bottom': css.window.tooltip.marginBottom,
+      '--tooltip-padding': css.window.tooltip.padding
     }}>
       <ToastContainer
         position="bottom-center"

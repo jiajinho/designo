@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { viewport } from '../../../common/config.json';
 import BubbleBackground from './BubbleBackground';
-import FormContainer from './FormContainer';
+import FormContainer from './form-container/FormContainer';
 
 const Wrapper = styled.div`
   @media screen and (min-width: ${viewport.min.tablet}) {

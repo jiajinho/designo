@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { viewport } from '../../common/config.json';
 import hardString from '../../common/hard-string';
 import Button from '../../common/jsx/Button';
-import MediaObject, { Wrapper as MediaWrapper, Container as MediaContainer } from '../../common/jsx/MediaObject';
+import MediaObject, { Wrapper as _MediaObject, Container as _MediaContainer } from '../../common/jsx/MediaObject';
 
 const Wrapper = styled.div`
   padding: var(--vertical-gap) var(--horizontal-gap);
@@ -15,24 +15,25 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  & ${MediaWrapper}:not(:first-child) { margin-top: var(--media-object-gap); }
+  ${_MediaObject}:not(:first-child) {
+    margin-top: var(--media-object-vertical-gap);
+  }
 
   @media screen and (min-width: ${viewport.min.laptop}) {
-    text-align: center;
-    flex-direction: row;
-    justify-content: space-around;
+    display: flex;
 
-    & ${MediaWrapper}:not(:first-child) { margin-top: 0px; }
-
-    & ${MediaWrapper} { 
-      display: block; 
-      width: 30%;
+    & ${_MediaContainer} {
+      flex-direction: column;
+      margin: 0 var(--media-object-horizontal-gap);
     }
-    & ${MediaContainer} { margin-left: unset; }
+
+    & ${_MediaObject} {
+      width: 33%;
+    }
+
+    ${_MediaObject}:not(:first-child) {
+      margin-top: 0;
+    }
   }
 `;
 

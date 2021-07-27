@@ -27,10 +27,18 @@
       "verticalGap": {
         "mobile": "90px"
       },
-      "mediaObjectGap": "80px",
+      "mediaObjectGap": {
+        "horizontal": "30px",
+        "vertical": "80px"
+      },
       "designLinkGap": "20px",
       "designCardGap": "30px",
-      "borderRadius": "10px"
+      "borderRadius": "10px",
+      "tooltip": {
+        "iconSizePx": 13,
+        "marginBottom": "7px",
+        "padding": "2px 10px"
+      }
     },
     "home": {
       "bubblePx": 500

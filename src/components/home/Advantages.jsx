@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { viewport } from '../../common/config.json';
 import hardString from '../../common/hard-string';
-import MediaObject, { Wrapper as MediaWrapper, Container as MediaContainer } from '../../common/jsx/MediaObject';
+import MediaObject, { Wrapper as _MediaObject, Container as _MediaContainer, Title as _MediaTitle, Content } from '../../common/jsx/MediaObject';
 
 const Wrapper = styled.div`
   padding: var(--vertical-gap) var(--horizontal-gap);
@@ -14,33 +14,49 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  & ${MediaWrapper}:not(:first-child) { margin-top: var(--media-object-gap); }
-
-  @media screen and (min-width: ${viewport.min.tablet}) {
-    text-align: left;
-
-    & ${MediaWrapper} { display: flex; }
-    & ${MediaContainer} { margin-left: 50px; }
+  ${_MediaObject}:not(:first-child) {
+    margin-top: var(--media-object-vertical-gap);
   }
 
   @media screen and (min-width: ${viewport.min.laptop}) {
-    text-align: center;
-    flex-direction: row;
-    justify-content: space-between;
-
-    & ${MediaWrapper} { 
-      display: block; 
-      width: 30%;
+    & ${Content} {
+      margin-left: var(--media-object-horizontal-gap);
+      text-align: left;
     }
 
-    & ${MediaWrapper}:not(:first-child) { margin-top: unset; }
-    & ${MediaContainer} { margin-left: unset; }
+    & ${_MediaContainer} {
+      display: flex;
+    }
+
+    & ${_MediaTitle} {
+      justify-content: flex-start;
+    }
   }
-`;
+  
+  @media screen and (min-width: ${viewport.min.desktop}) {
+    display: flex;
+    text-align: center;
+
+    & ${Content} {
+      margin-left: 0;
+      margin: 0 var(--media-object-horizontal-gap);
+      text-align: center;
+    }
+
+    & ${_MediaContainer} {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ${_MediaObject}:not(:first-child) {
+      margin-top: 0;
+    }
+
+    & ${_MediaTitle} {
+      justify-content: center;
+    }
+  }
+}`;
 
 const Advantages = () => {
 

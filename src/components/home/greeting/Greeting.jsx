@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { viewport } from '../../../common/config.json';
 import DescriptiveTitle, { Title, Wrapper as _DescriptiveTitle } from '../../../common/jsx/DescriptiveTitle';
 import Button from '../../../common/jsx/Button';
-import BubbleBackground, { Wrapper as _BubbleBackground } from './BubbleBackground';
+import BubbleBackground from './BubbleBackground';
 import PhoneBackground from './PhoneBackground';
 
 const Wrapper = styled.div`

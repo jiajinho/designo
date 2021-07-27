@@ -6,7 +6,7 @@ import hardStrings from '../../common/hard-string';
 import CallToAction, { Wrapper as _CallToAction } from '../shared/call-to-action/CallToAction';
 import MediaLocations from '../shared/MediaLocations';
 import Greeting, { Wrapper as _Greeting } from './greeting/Greeting';
-import MoreAbout, { Wrapper as _MoreAbout } from './MoreAbout';
+import MoreAbout from './MoreAbout';
 
 const Wrapper = styled.div` 
   & ${_CallToAction} {
