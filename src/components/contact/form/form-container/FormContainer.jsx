@@ -85,13 +85,13 @@ const FormContainer = () => {
     if (message.value === '') {
       error = true;
       setMessage({ ...message, error: contact.error.common.required });
-      email.wiggleAnimation();
+      message.wiggleAnimation();
     }
 
     if (email.value !== '' && !emailRegex.test(email.value)) {
       error = true;
       setEmail({ ...email, error: contact.error.email });
-      message.wiggleAnimation();
+      email.wiggleAnimation();
     }
 
     //Post process
