@@ -120,7 +120,7 @@ function App() {
         </TileLayerContext.Provider>
       </MediaContext.Provider>
     </Root >
-  )
+  );
 }
 
 export default App;

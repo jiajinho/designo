@@ -44,7 +44,11 @@
       "bubblePx": 500
     },
     "contact": {
-      "bubblePx": 350
+      "bubblePx": 350,
+      "cactus": {
+        "shakeLimitPx": 30,
+        "handWaveLimitDeg": 7
+      }
     },
     "about": {
       "bubblePx": 500

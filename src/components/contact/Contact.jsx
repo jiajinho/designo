@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import styled from 'styled-components';
 import MediaLocations from '../shared/MediaLocations';
+import Cactus from './cactus/Cactus';
 import Form from './form/Form';
 
 const Wrapper = styled.div``;
@@ -16,6 +17,8 @@ const Contact = () => {
     <Wrapper>
       <Form />
       <MediaLocations />
+
+      <Cactus />
     </Wrapper>
   );
 }

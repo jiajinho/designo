@@ -7,6 +7,7 @@ import { theme } from '../config.json';
 export const Wrapper = styled.button`
   border-radius: var(--border-radius);
   border: none;
+  outline: none;
   overflow: hidden;
   cursor: pointer;
 

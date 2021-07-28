@@ -31,6 +31,7 @@ const Locations = () => {
 
   return (
     <Wrapper>
+
       {locations.map((item, i) =>
         <LocationCard
           key={item.id}
@@ -38,8 +39,8 @@ const Locations = () => {
           name={item.name}
           hq={item.hq}
           address={item.address}
-          phone={`P: ${item.phone}`}
-          email={`M: ${item.email}`}
+          phone={`P : ${item.phone}`}
+          email={`M : ${item.email}`}
           lat={item.lat}
           lng={item.lng}
           tileLayer={tileLayers[i]}

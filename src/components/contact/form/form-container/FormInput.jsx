@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import Tooltip, { Wrapper as _Tooltip } from '../../../shared/Tooltip';
@@ -41,7 +41,6 @@ const Input = styled.input(({ as: _as }) => `
   outline: 0;
 
   resize: vertical;
-  border-bottom: 1px solid var(--label-color);
 
   /*  Auto fill transparent background fix, 
       https://developpaper.com/how-to-better-remove-the-input-auto-fill-background-in-google-browser/ 
@@ -60,41 +59,39 @@ const Wrapper = styled.div`
   flex-direction: column;
   text-align: left;
   margin: 20px 0;
+
+  border-bottom: 1px solid var(--label-color);
 `;
 
-const FormInput = ({ id, label, data, setData, textarea, optional }) => {
+const FormInput = ({ id, label, data, setData, textarea, optional }) => (
+  <Wrapper style={{
+    '--label-color': "#ffffffcc"
+  }}>
+    <Label htmlFor={id}>
+      <p>{label}</p>
 
+      {!optional ? "" :
+        <Optional>
+          <Tooltip text="Optional" />
+        </Optional>
+      }
 
-  return (
-    <Wrapper style={{
-      '--label-color': "#ffffffcc"
-    }}>
-      <Label htmlFor={id}>
-        <p>{label}</p>
-
-        {!optional ? "" :
-          <Optional>
-            <Tooltip text="Optional" />
-          </Optional>
-        }
-
-        <Error
-          text={data.error}
-          setData={setData}
-          hidden={data.error ? false : true}
-        />
-      </Label>
-
-      <Input
-        as={textarea ? "textarea" : "input"}
-        id={id}
-        type="text"
-        rows="3"
-        data={data.value}
-        onChange={e => setData({ ...data, value: e.target.value, error: '' })}
+      <Error
+        text={data.error}
+        setData={setData}
+        hidden={data.error ? false : true}
       />
-    </Wrapper>
-  );
-}
+    </Label>
+
+    <Input
+      as={textarea ? "textarea" : "input"}
+      id={id}
+      type="text"
+      rows="3"
+      data={data.value}
+      onChange={e => setData({ ...data, value: e.target.value, error: '' })}
+    />
+  </Wrapper>
+);
 
 export default FormInput;
