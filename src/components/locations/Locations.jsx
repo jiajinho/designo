@@ -44,7 +44,7 @@ const Locations = () => {
           lat={item.lat}
           lng={item.lng}
           tileLayer={tileLayers[i]}
-          flexDirectionLaptop={i % 2 === 0 ? "row-reverse" : "row"}
+          flexDirectionLaptop={i % 2 === 0 ? "row" : "row-reverse"}
         />
       )}
 

@@ -48,7 +48,7 @@ const Designo = ({ light, animatable }) => {
     <Wrapper style={{
       '--color': light ? theme.primary.light : theme.primary.dark
     }}>
-      <Link to="/">
+      <Link to="/" onClick={() => window.scrollTo(0, 0)}>
 
         <Logo as="img" src='/logo48.png' />
         <Title as="h2" ref={dom}>
