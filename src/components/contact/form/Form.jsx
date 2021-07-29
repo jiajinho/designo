@@ -15,10 +15,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Contact = () => (
+const Contact = ({ cactusSlideAwayAnimationRef }) => (
   <Wrapper>
     <BubbleBackground>
-      <FormContainer />
+      <FormContainer cactusSlideAwayAnimationRef={cactusSlideAwayAnimationRef} />
     </BubbleBackground>
   </Wrapper>
 );

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { toast } from 'react-toastify';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 import { viewport } from '../../../../common/config.json';
 import hardString from '../../../../common/hard-string';
+import FormContext from '../../../../common/FormContext';
 import Button from '../../../../common/jsx/Button';
+import Spinner from '../../../shared/Spinner';
 import FormInput from './FormInput';
 import ThankYouBubble from './ThankYouBubble';
-
-import firebase from 'firebase/app';
-import 'firebase/database';
 
 const ButtonContainer = styled.div`
   position: relative;
@@ -59,16 +60,20 @@ const Wrapper = styled.form`
   }
 `;
 
-const FormContainer = () => {
+const FormContainer = ({ cactusSlideAwayAnimationRef }) => {
 
   const { contact } = hardString;
-  const emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$/);
+  const emailRegex = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,})+)$/;
 
+  const { form, cactus } = useContext(FormContext);
   const [name, setName] = useState({ value: '', error: '', wiggleAnimation: '' });
   const [email, setEmail] = useState({ value: '', error: '', wiggleAnimation: '' });
   const [message, setMessage] = useState({ value: '', error: '', wiggleAnimation: '' });
 
   const [animateThankYouBubble, setAnimation] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
+  const disableForm = form.data.name && true;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,14 +101,28 @@ const FormContainer = () => {
 
     //Post process
     if (!error) {
+      setSubmitting(true);
+
       firebase.database().ref('/').push({
         name: name.value,
         email: email.value,
-        message: message.value
+        message: message.value,
+        timestamp: Date.now()
       }, (error) => {
         if (error) toast.error(error);
+        else {
+          setSubmitting(false);
 
-        animateThankYouBubble();
+          form.setData(() => ({
+            name: name.value,
+            email: email.value,
+            message: message.value
+          }));
+
+          if (!cactus.greeted) cactusSlideAwayAnimationRef.current();
+
+          animateThankYouBubble();
+        }
       });
     }
   }
@@ -111,13 +130,13 @@ const FormContainer = () => {
   useEffect(() => {
     if (!firebase.apps.length) {
       firebase.initializeApp({
-        apiKey: "AIzaSyCxA1bab-rC03M3nnydO876wQKSSIH-7UE",
-        authDomain: "designo-0722.firebaseapp.com",
-        databaseURL: "https://designo-0722-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "designo-0722",
-        storageBucket: "designo-0722.appspot.com",
-        messagingSenderId: "63495139288",
-        appId: "1:63495139288:web:9c922564a1b430cf908cad"
+        apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+        authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+        databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
+        projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+        storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.REACT_APP_FIREBASE_APP_ID
       });
     } else {
       firebase.app();
@@ -138,6 +157,9 @@ const FormContainer = () => {
           label="Name"
           data={name}
           setData={setName}
+
+          disable={disableForm}
+          disableData={form.data.name}
         />
 
         <FormInput
@@ -146,6 +168,9 @@ const FormContainer = () => {
           data={email}
           setData={setEmail}
           optional
+
+          disable={disableForm}
+          disableData={form.data.email}
         />
 
         <FormInput
@@ -154,10 +179,14 @@ const FormContainer = () => {
           data={message}
           setData={setMessage}
           textarea
+
+          disable={disableForm}
+          disableData={form.data.message}
         />
 
         <ButtonContainer>
-          <Button light text="SUBMIT" onClick={handleSubmit} />
+          {submitting && <Spinner />}
+          <Button light text="SUBMIT" onClick={handleSubmit} disable={disableForm} />
           <ThankYouBubble setAnimation={setAnimation} />
         </ButtonContainer>
       </div>

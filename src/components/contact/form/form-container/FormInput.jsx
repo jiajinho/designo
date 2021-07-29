@@ -14,23 +14,26 @@ const Label = styled.label`
 
   & > p {
     display: inline-block;
+    margin-right: 7px;
   }
 `;
 
-const Optional = styled.div`
+const Icon = styled.div(({ name }) => `
   position: relative;
   height: var(--tooltip-icon-size);
-  width: var(--tooltip-icon-size);
-  margin: 0 5px;
+  aspect-ratio: 1/1;
+  width: auto;
+  margin-right: 5px;
 
-  background: url(/static/common/question.svg);
+  background: url(/static/common/${name}.svg);
   background-size: contain;
+  background-repeat: no-repeat;
 
   &:hover ${_Tooltip} {
     visibility: visible;
     opacity: 1;
   }
-`;
+`);
 
 const Input = styled.input(({ as: _as }) => `
   background-color: #0000;
@@ -63,17 +66,23 @@ const Wrapper = styled.div`
   border-bottom: 1px solid var(--label-color);
 `;
 
-const FormInput = ({ id, label, data, setData, textarea, optional }) => (
+const FormInput = ({ id, label, data, setData, textarea, optional, disable, disableData }) => (
   <Wrapper style={{
     '--label-color': "#ffffffcc"
   }}>
-    <Label htmlFor={id}>
+    <Label>
       <p>{label}</p>
 
-      {!optional ? "" :
-        <Optional>
+      {optional &&
+        <Icon name="question">
           <Tooltip text="Optional" />
-        </Optional>
+        </Icon>
+      }
+
+      {disable &&
+        <Icon name="approved">
+          <Tooltip text="Thanks for your feedback!" />
+        </Icon>
       }
 
       <Error
@@ -88,7 +97,8 @@ const FormInput = ({ id, label, data, setData, textarea, optional }) => (
       id={id}
       type="text"
       rows="3"
-      data={data.value}
+      disabled={disable}
+      value={disable ? disableData : data.value}
       onChange={e => setData({ ...data, value: e.target.value, error: '' })}
     />
   </Wrapper>

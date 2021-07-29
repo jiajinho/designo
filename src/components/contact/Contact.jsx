@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-
+import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+
 import MediaLocations from '../shared/MediaLocations';
+import FormContext from '../../common/FormContext';
 import Cactus from './cactus/Cactus';
 import Form from './form/Form';
 
@@ -9,16 +10,19 @@ const Wrapper = styled.div``;
 
 const Contact = () => {
 
+  const { cactus } = useContext(FormContext);
+  const cactusSlideAwayAnimationRef = useRef();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   });
 
   return (
     <Wrapper>
-      <Form />
+      <Form cactusSlideAwayAnimationRef={cactusSlideAwayAnimationRef} />
       <MediaLocations />
 
-      <Cactus />
+      {!cactus.greeted && <Cactus cactusSlideAwayAnimationRef={cactusSlideAwayAnimationRef} />}
     </Wrapper>
   );
 }

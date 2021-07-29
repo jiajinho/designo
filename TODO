@@ -10,10 +10,11 @@ cactus bot (SLIDE API)
 
 v1.4
 add placeholder spinner in images
-disallow people to keyin another contact form
-dont cactus bot to come out after display once
-remove htmlLabelFor for forms
-add your signature
+add placeholder in submit button when people submit form
+add indicator to show the form has submitted before
+disallow people to keyin another contact form OK
+dont cactus bot to come out after display once OK
+remove htmlLabelFor for forms OK
 
 write proper readme.md
 

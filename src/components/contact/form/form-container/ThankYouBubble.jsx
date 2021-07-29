@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from '@react-spring/web';
-import { config } from 'react-spring';
 
 const Wrapper = styled(animated.div)`
   display: inline;

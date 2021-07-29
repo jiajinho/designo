@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import L from 'leaflet';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -8,6 +9,7 @@ import { viewport, theme, css } from './common/config.json';
 import hardString from './common/hard-string';
 import MediaContext from './common/MediaContext';
 import TileLayerContext from './common/TileLayerContext';
+import FormContext from './common/FormContext';
 import Header from './components/shared/header/Header';
 import Footer from './components/shared/footer/Footer';
 import Home from './components/home/Home';
@@ -24,6 +26,14 @@ const Root = styled.div`
 `;
 
 function App() {
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const [cactusGreeted, setCactusGreeted] = useState(false);
 
   const _viewport = {
     isTablet: useMediaPredicate(`(min-width: ${viewport.min.tablet})`),
@@ -75,50 +85,62 @@ function App() {
 
       <MediaContext.Provider value={_viewport}>
         <TileLayerContext.Provider value={tileLayers}>
-          <BrowserRouter>
-
-            <Header />
-
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-
-              <Route path="/about">
-                <About />
-              </Route>
-
-              <Route path="/contact">
-                <Contact />
-              </Route>
-
-              <Route path="/locations">
-                <Locations />
-              </Route>
-
-              <Route path="/web">
-                <Design type="web" />
-              </Route>
-
-              <Route path="/app">
-                <Design type="app" />
-              </Route>
-
-              <Route path="/graphic">
-                <Design type="graphic" />
-              </Route>
-
-              <Route>
-                <NotFound />
-              </Route>
-            </Switch>
-
-            <Footer />
+          <FormContext.Provider value={{
+            form: {
+              data: formData,
+              setData: setFormData
+            },
+            cactus: {
+              greeted: cactusGreeted,
+              setGreeted: setCactusGreeted
+            }
+          }}>
+            <BrowserRouter>
 
 
-          </BrowserRouter>
+              <Header />
+
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+
+                <Route path="/about">
+                  <About />
+                </Route>
+
+                <Route path="/contact">
+                  <Contact />
+                </Route>
+
+                <Route path="/locations">
+                  <Locations />
+                </Route>
+
+                <Route path="/web">
+                  <Design type="web" />
+                </Route>
+
+                <Route path="/app">
+                  <Design type="app" />
+                </Route>
+
+                <Route path="/graphic">
+                  <Design type="graphic" />
+                </Route>
+
+                <Route>
+                  <NotFound />
+                </Route>
+              </Switch>
+
+              <Footer />
+
+
+            </BrowserRouter>
+          </FormContext.Provider>
         </TileLayerContext.Provider>
-      </MediaContext.Provider>
+      </MediaContext.Provider >
     </Root >
   );
 }

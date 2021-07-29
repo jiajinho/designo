@@ -15,8 +15,11 @@ export const Wrapper = styled.div`
   background: var(--theme-primary-dark);
   color: var(--theme-primary-light);
   border-radius: var(--border-radius);
-
   transition: .25s;
+
+  & p {
+    white-space: pre;
+  }
 
   &::after {
     content: "";
@@ -32,7 +35,7 @@ export const Wrapper = styled.div`
 
 const Tooltip = ({ text }) => (
   <Wrapper>
-    {text}
+    <p>{text}</p>
   </Wrapper>
 );
 

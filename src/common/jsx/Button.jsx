@@ -4,6 +4,28 @@ import { Link } from 'react-router-dom';
 
 import { theme } from '../config.json';
 
+const Text = styled.p`
+  display: block;
+  padding: 15px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 500;
+
+  color: var(--color);
+  background: var(--background);
+  transition: .25s;
+
+  &:hover {
+    background: var(--theme-secondary-peach);
+    color: var(--theme-primary-light);
+  }
+`;
+
+const _Link = styled(Link)`
+  text-decoration: none;
+  color: var(--color);
+`;
+
 export const Wrapper = styled.button`
   border-radius: var(--border-radius);
   border: none;
@@ -17,33 +39,15 @@ export const Wrapper = styled.button`
   height: 53px;
   flex-grow: 0;
   flex-shrink: 0;
-`;
 
-const _Link = styled(Link)`
-  text-decoration: none;
-  color: var(--color);
-`;
-
-const Text = styled.p`
-  display: block;
-  padding: 15px;
-  font-size: 16px;
-  letter-spacing: 1px;
-  font-weight: 500;
-
-  color: var(--color);
-  background: var(--background);
-
-  transition: .25s;
-  will-change: background color;
-
-  &:hover {
-    background: var(--theme-secondary-peach);
-    color: var(--theme-primary-light);
+  &[disabled] > ${Text} {
+    background: #ddd;
+    color: var(--theme-primary-dark);
+    cursor: auto;
   }
 `;
 
-const Button = ({ light, url, text, onClick }) => {
+const Button = ({ light, url, text, onClick, disable }) => {
 
   const background = light ?
     theme.primary.light :
@@ -55,7 +59,8 @@ const Button = ({ light, url, text, onClick }) => {
 
   return (
     <Wrapper
-      onClick={onClick ? e => onClick(e) : () => { }}
+      onClick={onClick ? e => onClick(e) : null}
+      disabled={disable}
       style={{
         '--color': color,
         '--background': background

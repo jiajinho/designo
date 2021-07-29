@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { viewport, css } from '../../../common/config.json';
-import DescriptiveTitle, { Title, Wrapper as _DescriptiveTitle } from '../../../common/jsx/DescriptiveTitle';
+import { viewport } from '../../../common/config.json';
+import DescriptiveTitle, { Title } from '../../../common/jsx/DescriptiveTitle';
 import BubbleBackground from './BubbleBackground';
 
 const Wrapper = styled.div`

@@ -35,7 +35,7 @@
       "designCardGap": "30px",
       "borderRadius": "10px",
       "tooltip": {
-        "iconSizePx": 13,
+        "iconSizePx": 12,
         "marginBottom": "7px",
         "padding": "2px 10px"
       }

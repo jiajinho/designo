@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring, config } from '@react-spring/web';
 
 import { css } from '../../../common/config.json';
+import FormContext from '../../../common/FormContext';
 import SpeechBubble from './SpeechBubble';
 
 const Wrapper = styled(animated.div)`
@@ -25,10 +26,11 @@ const AnimateLeftHand = styled(animated.g)`
 `;
 
 
-const Cactus = () => {
+const Cactus = ({ cactusSlideAwayAnimationRef }) => {
 
   const { shakeLimitPx, handWaveLimitDeg } = css.contact.cactus;
   const bubbleAnimationRef = useRef();
+  const { cactus } = useContext(FormContext);
 
   const [hatFall, hatFallAPI] = useSpring(() => ({
     transformOrigin: "center",
@@ -66,7 +68,6 @@ const Cactus = () => {
     config: config.wobbly
   }));
 
-
   const slideAway = () => {
     bubbleAnimationRef.current(false);
 
@@ -76,9 +77,12 @@ const Cactus = () => {
       config: {
         easing: x => x * x,
         duration: 1000
-      }
+      },
+      onRest: () => cactus.setGreeted(true)
     });
   }
+
+  cactusSlideAwayAnimationRef.current = slideAway;
 
   return (
     <Wrapper style={slide}>
