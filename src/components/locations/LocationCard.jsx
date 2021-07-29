@@ -6,7 +6,7 @@ import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import retinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
-import { viewport } from '../../common/config.json';
+import { viewport, css } from '../../common/config.json';
 import DescriptiveTitle, { Wrapper as _DescriptiveTitle, Title } from '../../common/jsx/DescriptiveTitle';
 
 const defaultIconOptions = { ...L.Icon.Default.prototype.options };
@@ -28,17 +28,21 @@ export const Wrapper = styled.div`
   @media screen and (min-width: ${viewport.min.desktop}) {
     display: flex;
     flex-direction: var(--flex-direction-laptop);
+    justify-content: space-between;
   }
 `;
 
-const Map = styled.div`
-  height: 280px;
+const Map = styled.div(({ leftSide }) => `
+  height: 300px;
   background: lightpink;
 
   @media screen and (min-width: ${viewport.min.desktop}) {
     width: 40%;
+    border-radius: var(--border-radius);
+    margin-left: ${leftSide ? css.map.horizontalGapPx : 0}px;
+    margin-right: ${leftSide ? 0 : css.map.horizontalGapPx}px;
   }
-`;
+`);
 
 const Content = styled.div`
   padding: 60px 0;
@@ -59,6 +63,7 @@ const Content = styled.div`
   }
 
   @media screen and (min-width: ${viewport.min.desktop}) {
+    border-radius: var(--border-radius);
     padding: 60px 50px;
     flex-grow: 1;
   }
@@ -100,7 +105,7 @@ const LocationCard = ({ id, name, hq, address, phone, email, lat, lng, tileLayer
       '--background': "rgba(255, 173, 155, .2)",
       '--flex-direction-laptop': flexDirectionLaptop
     }}>
-      <Map ref={dom} />
+      <Map ref={dom} leftSide={(flexDirectionLaptop === "row-reverse") ? true : false} />
 
       <Content>
         <h1>{name}</h1>

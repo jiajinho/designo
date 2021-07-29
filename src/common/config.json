@@ -57,6 +57,9 @@
       "rollDuration": 20000,
       "fadeInRatio": 0.1,
       "fadeOutRatio": 0.9
+    },
+    "map": {
+      "horizontalGapPx": 20
     }
   }
 }
