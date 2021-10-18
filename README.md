@@ -5,7 +5,7 @@ The gist of the challenge is to build website/app and get it looking as close to
 
 The main function of the website is to showcase and introducing a mock-company called 'Designo', along with some animations.
 
-View demo here:[https://designo-0722.netlify.app](https://designo-0722.netlify.app)
+View demo here: [https://designo-0722.netlify.app](https://designo-0722.netlify.app)
 
 ## Features
 1. Responsive layout
